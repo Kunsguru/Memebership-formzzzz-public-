@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livewell Business Owner Membership Form Public</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .logo {
+            max-width: 60px;
+            margin-right: 20px;
+        }
+
+        .company-info h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .company-info p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #27ae60;
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+        .instruction {
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        form fieldset {
+            border: 1px solid #d0d0d0;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        form legend {
+            font-size: 18px;
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="date"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
+
+        .guarantee-question {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .terms {
+            margin-top: 20px;
+            color: #34495e;
+        }
+
+        form button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #2ecc71;
+        }
+
+        #serial-number-container {
+            word-wrap: break-word;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            font-size: 8px;
+        }
+
+        .sn {
+            display: flex;
+            align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-header">
+            <img src="/storage/emulated/0/Pictures/Screenshot/Screenshot_20240825-051817.jpg" alt="Livewell Logo" class="logo">
+            <div class="company-info">
+                <h1>Livewell Housing Solutions Limited</h1>
+                <p>...own your tomorrow</p>
+            </div>
+        </div>
+
+        <h2>LIVEWELL BUSINESS OWNER FORM </h2>
+        <p class="instruction">Complete the form below to sign up for membership to Livewell Housing Community</p>
+
+        
+        <br>
+        <form onsubmit="sendFormData(event)">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+     
+
+                <label for="stateOfOrigin">State of Origin:</label>
+                <input type="text" id="stateOfOrigin" name="stateOfOrigin">
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+
+                <label for="residentialAddress">Residential Address:</label>
+                <input type="text" id="residentialAddress" name="residentialAddress">
+
+                <label for="maritalStatus">Marital Status:</label>
+                <input type="text" id="maritalStatus" name="maritalStatus">
+
+                <label for="mobileNo">Mobile No:</label>
+                <input type="text" id="mobileNo" name="mobileNo">
+
+                <label for="occupation">Occupation:</label>
+                <input type="text" id="occupation" name="occupation">
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email">
+            </fieldset>
+
+            <p class="guarantee-question">
+                CAN YOU GUARANTEE SOMEONE INTRODUCED BY YOU? <span>Yes / No</span>
+            </p>
+
+            <p class="terms">
+                Do you agree to the terms and conditions and promise to abide by the regulation governing LIVEWELL HOUSING SOL. LTD? If yes, please Sign:
+            </p>
+
+            <label for="signature">Signature & Date:</label>
+            <input type="text" id="signature" name="signature">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        
+
+        // Function to handle form submission
+        function sendFormData(event) {
+            event.preventDefault();
+
+            // Gather form data
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const emailBody = `
+Full Name: ${formData.get('fullName')}
+State of Origin: ${formData.get('stateOfOrigin')}
+Date of Birth: ${formData.get('dob')}
+Residential Address: ${formData.get('residentialAddress')}
+Marital Status: ${formData.get('maritalStatus')}
+Mobile No: ${formData.get('mobileNo')}
+Occupation: ${formData.get('occupation')}
+Email Address: ${formData.get('email')}
+
+Guarantee Question: CAN YOU GUARANTEE SOMEONE INTRODUCED BY YOU? Yes/No
+
+Signature & Date: ${formData.get('signature')}
+            `;
+
+            // Construct the mailto link with multiple recipients
+            const mailtoLink = `mailto:mondaykingsley80@gmail.com?cc=livewell.equity@gmail.com&subject=Livewell Business Owner Form ( Public )
+Submission&body=${encodeURIComponent(emailBody)}`;
+
+            // Open the mail client with the pre-filled mailto link
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+
+</html>
